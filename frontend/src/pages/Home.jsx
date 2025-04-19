@@ -1,5 +1,6 @@
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Header from '../components/Header';
 
 import banner from '../assets/communitybanner.jpg';
 import news1 from '../assets/news1.jpg';
@@ -14,98 +15,95 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#FCF6F5] min-h-screen px-4 pb-20">
-      {/* 헤더 */}
-      <header className="flex items-center justify-between py-4">
-        <FaBars className="text-xl" />
-        <h1 className="text-xl font-bold text-[#111]">DermaScan</h1>
-        <div className="w-6" />
-      </header>
+    <div className="h-screen flex flex-col bg-[#FCF6F5]">
+      <Header />
 
-      {/* 검색 */}
-      <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm mb-4">
-        <FaSearch className="text-gray-400 mr-2" />
-        <input
-          type="text"
-          placeholder="Search"
-          className="flex-1 text-sm bg-transparent focus:outline-none"
-        />
-      </div>
+      <div className="flex-1 overflow-y-auto px-4 pb-4">
+        {/* 검색 */}
+        <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm my-4">
+          <FaSearch className="text-gray-400 mr-2" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="flex-1 text-sm bg-transparent focus:outline-none"
+          />
+        </div>
 
-      {/* 커뮤니티 배너 */}
-      <div className="rounded-xl overflow-hidden mb-4 h-32">
-        <img
-          src={banner}
-          alt="커뮤니티"
-          className="w-full h-36 object-cover"
-        />
-      </div>
+        {/* 커뮤니티 배너 */}
+        <div className="space-y-20 rounded-xl overflow-hidden mb-4">
+          <img
+            src={banner}
+            alt="커뮤니티"
+            className="w-full max-h-32 object-cover"
+          />
+        </div>
 
-      {/* 스킨케어 팁 섹션 */}
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg font-semibold">스킨 케어 팁</h2>
-        <span className="text-sm text-gray-500">{'>'}</span>
-      </div>
+        {/* 스킨케어 팁 섹션 */}
+        <div className="space-y-20 flex items-center justify-between mb-2">
+          <h2 className="text-lg font-semibold">스킨 케어 팁</h2>
+          <span className="text-sm text-gray-500">{'>'}</span>
+        </div>
 
-      {/* 뉴스 카드 */}
-<div className="flex space-x-4 overflow-x-auto mb-6">
-  {[news1, news2, news3].map((img, idx) => {
-    const titles = [
-      "여드름 흉터 : 어떻게 없앨 수 있을까?",
-      "자외선 차단제 : 올바르게 선택하고 바르는 방법",
-      "자외선이 피부에 끼치는 영향을 알아보자",
-    ];
-    return (
-      <div
-        key={idx}
-        className="min-w-[160px] bg-white rounded-xl shadow-md overflow-hidden"
-      >
-        <img
-          src={img}
-          alt={`뉴스${idx + 1}`}
-          className="h-24 w-full object-cover"
-        />
-        <div className="p-2 text-xs">
-          <p className="text-gray-600 font-semibold mb-1">News</p>
-          <p className="text-[11px] text-gray-700 leading-tight">
-            {titles[idx]}
-          </p>
+        {/* 뉴스 카드 */}
+        <div className="flex space-x-4 overflow-x-auto mb-6">
+          {[news1, news2, news3].map((img, idx) => {
+            const titles = [
+              "여드름 흉터 : 어떻게 없앨 수 있을까?",
+              "자외선 차단제 : 올바르게 선택하고 바르는 방법",
+              "자외선이 피부에 끼치는 영향을 알아보자",
+            ];
+            return (
+              <div
+                key={idx}
+                className="min-w-[160px] bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <img
+                  src={img}
+                  alt={`뉴스${idx + 1}`}
+                  className="h-24 w-full object-cover"
+                />
+                <div className="p-2 text-xs">
+                  <p className="text-gray-600 font-semibold mb-1">News</p>
+                  <p className="text-[11px] text-gray-700 leading-tight">
+                    {titles[idx]}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 최근 진단 */}
+        <div className="space-y-20 flex items-center justify-between mb-2">
+          <h2 className="text-lg font-semibold">최근</h2>
+          <span className="text-sm text-gray-500">{'>'}</span>
+        </div>
+
+        <div className="flex space-x-4 overflow-x-auto mb-6">
+          {[{ img: acne, label: "여드름" }, { img: mosquito, label: "벌레 물림" }, { img: shingles, label: "대상포진" },{ img: skincancer, label: "피부암" }].map(
+            ({ img, label }, idx) => (
+              <div key={idx} className="flex flex-col items-center">
+                <img
+                  src={img}
+                  alt={label}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <span className="text-xs mt-1">{label}</span>
+              </div>
+            )
+          )}
         </div>
       </div>
-    );
-  })}
-</div>
 
-
-      {/* 최근 진단 */}
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg font-semibold">최근</h2>
-        <span className="text-sm text-gray-500">{'>'}</span>
+      {/* 진단 버튼 - 하단 고정 */}
+      <div className="px-4 pb-20">
+        <button
+          onClick={() => navigate("/guide")}
+          className="w-full py-3 bg-black text-white rounded-lg text-sm font-medium hover:opacity-90 transition"
+        >
+          진단하기
+        </button>
       </div>
-
-      <div className="flex space-x-4 overflow-x-auto mb-6">
-        {[{ img: acne, label: "여드름" }, { img: mosquito, label: "벌레 물림" }, { img: shingles, label: "대상포진" },{ img: skincancer, label: "피부암" }].map(
-          ({ img, label }, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <img
-                src={img}
-                alt={label}
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <span className="text-xs mt-1">{label}</span>
-            </div>
-          )
-        )}
-      </div>
-
-      <div className="fixed bottom-4 left-4 right-4">
-    <button
-      onClick={() => navigate("/guide")}
-      className="w-full py-3 bg-black text-white rounded-lg text-sm font-medium hover:opacity-90 transition"
-    >
-      촬영하기
-    </button>
-  </div>
     </div>
   );
 }
