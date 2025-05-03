@@ -60,7 +60,9 @@ export default function PhotoUpload() {
           className="hidden"
         />
 
-        <p className="text-xl mt-6 text-center font-bold text-gray-700">사진을 업로드하거나<br /> 촬영해주세요.</p>
+        <p className="text-xl mt-6 text-center font-bold text-gray-700">
+            사진을 업로드하거나
+            <br /> 촬영해주세요.</p>
       </div>
 
       {/* 제출 버튼 */}

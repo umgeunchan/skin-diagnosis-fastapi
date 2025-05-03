@@ -72,27 +72,38 @@ export default function Home() {
             );
           })}
         </div>
-
+        
         {/* 최근 진단 */}
-        <div className="space-y-20 flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-2">
           <h2 className="text-lg font-semibold">최근</h2>
-          <span className="text-sm text-gray-500">{'>'}</span>
+          <span
+            onClick={() => navigate("/history")}
+            className="text-sm text-gray-500 cursor-pointer"
+          >
+          {'>'}
+          </span>
         </div>
 
         <div className="flex space-x-4 overflow-x-auto mb-6">
-          {[{ img: acne, label: "여드름" }, { img: mosquito, label: "벌레 물림" }, { img: shingles, label: "대상포진" },{ img: skincancer, label: "피부암" }].map(
-            ({ img, label }, idx) => (
-              <div key={idx} className="flex flex-col items-center">
-                <img
-                  src={img}
-                  alt={label}
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <span className="text-xs mt-1">{label}</span>
-              </div>
-            )
-          )}
-        </div>
+  {[{ img: acne, label: "여드름" }, { img: mosquito, label: "벌레 물림" }, { img: shingles, label: "대상포진" }, { img: skincancer, label: "피부암" }].map(
+    ({ img, label }, idx) => (
+      <div
+        key={idx}
+        className="flex flex-col items-center cursor-pointer"
+        onClick={() => navigate('/detail', { state: { diagnosis: label } })}
+      >
+        <img
+          src={img}
+          alt={label}
+          className="w-16 h-16 rounded-full object-cover"
+        />
+        <span className="text-xs mt-1">{label}</span>
+      </div>
+    )
+  )}
+</div>
+
+
       </div>
 
       {/* 진단 버튼 - 하단 고정 */}
