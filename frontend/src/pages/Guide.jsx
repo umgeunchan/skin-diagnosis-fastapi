@@ -10,35 +10,27 @@ export default function Guide() {
   return (
     <div className="flex flex-col h-screen bg-[#FFF8F8]">
       <Header />
-
       <div className="px-4 mt-2">
-              <BackButton />
-            </div>
+        <BackButton />
+      </div>
 
-      <div className="flex flex-col items-center px-6 py-4 flex-1 ">
-        {/* 안내 텍스트 */}
-        <p className="text-base font-semibold text-center">주의사항</p>
+      <div className="flex flex-col items-center px-6 py-4 flex-1 justify-between">
+        <div className="flex flex-col items-center">
+          <p className="text-base font-semibold text-center">주의사항</p>
+          <img src={guideImage} alt="주의사항 가이드" className="w-full max-w-[240px] aspect-[3/4] object-contain mt-4" />
+          <p className="text-xl font-bold text-center leading-relaxed mt-4">
+            전면 카메라 대신<br />후면 카메라를 사용해주세요.
+          </p>
+        </div>
 
-        {/* 이미지 */}
-        <img
-          src={guideImage}
-          alt="주의사항 가이드"
-          className="w-7/5 max-w-xs aspect-[3/4] object-contain"
-        />
-
-        {/* 설명 */}
-        <p className="text-2xl font-bold text-center leading-relaxed mt-4">
-          전면 카메라 대신<br />
-          후면 카메라를 사용해주세요.
-        </p>
-
-        {/* 버튼 */}
-        <button
-          onClick={() => navigate('/guide2')}
-          className="w-full mt-4 py-3 bg-black text-white rounded-lg text-m font-medium"
-        >
-          다음
-        </button>
+        <div className="w-full px-6 absolute bottom-6 left-0">
+  <button
+    onClick={() => navigate('/guide2')}
+    className="w-full py-3 bg-black text-white rounded-lg text-m font-medium"
+  >
+    다음
+  </button>
+</div>
       </div>
     </div>
   );
