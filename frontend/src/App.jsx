@@ -1,7 +1,7 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Guide from "./pages/Guide";
 import Guide2 from "./pages/Guide2";
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/" element={<Home />} />
       <Route path="/guide" element={<Guide />} />
       <Route path="/guide2" element={<Guide2 />} />
