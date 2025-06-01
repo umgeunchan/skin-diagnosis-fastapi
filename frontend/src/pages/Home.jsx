@@ -20,7 +20,12 @@ export default function Home() {
         {/* 스킨케어 팁 섹션 */}
         <div className="flex items-center justify-between mt-20 mb-2">
           <h2 className="text-lg font-semibold">스킨 케어 팁</h2>
-          <span className="text-sm text-gray-500">{">"}</span>
+          <span
+            onClick={() => navigate("/care")}
+            className="text-sm text-gray-500 cursor-pointer"
+          >
+            {">"}
+          </span>
         </div>
 
         {/* 뉴스 카드 */}
@@ -31,10 +36,12 @@ export default function Home() {
               "자외선 차단제 : 올바르게 선택하고 바르는 방법",
               "자외선이 피부에 끼치는 영향을 알아보자",
             ];
+
             return (
               <div
                 key={idx}
-                className="min-w-[160px] bg-white rounded-xl shadow-md overflow-hidden"
+                onClick={() => navigate(`/skintip/${idx}`)} // 클릭 시 이동
+                className="min-w-[160px] bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
               >
                 <img
                   src={img}
