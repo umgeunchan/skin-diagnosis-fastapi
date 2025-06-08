@@ -8,7 +8,7 @@ export default function Start() {
 
   return (
     <div className="h-screen flex flex-col bg-[#FCF6F5]">
-      <Header />
+      
       <div className="flex-1 flex flex-col items-center justify-center px-6">
         <img src={logo} alt="Logo" className="w-64 h-auto mb-8" />
         <button

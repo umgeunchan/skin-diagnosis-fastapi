@@ -8,8 +8,8 @@ import BackButton from '../components/BackButton';
 import hemangioma from '../assets/화농성 육아종.png';
 
 const diagnosisData = {
-    '화농 육아종': {
-    title: '화농 육아종',
+    '화농육아종': {
+    title: '화농육아종',
     image: hemangioma,
     summary:
       '피부나 점막에 발생하는 양성 혈관 증식성 병변으로, 감염이 아닌 과도한 모세혈관 증식에 의해 생깁니다.',
