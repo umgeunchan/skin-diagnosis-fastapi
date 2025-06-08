@@ -1,11 +1,13 @@
+// src/pages/PhotoUpload2.jsx
 import Header from "../components/Header";
 import BackButton from "../components/BackButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUpload } from "react-icons/fa";
 
-export default function PhotoUpload() {
+export default function PhotoUpload2() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleImageChange = (e) => {
@@ -21,17 +23,22 @@ export default function PhotoUpload() {
       alert("사진을 업로드하거나 촬영해주세요.");
       return;
     }
-    navigate("/result", { state: { imageUrl: selectedImage } });
+    // 로딩 시작
+    setIsLoading(true);
+    // 4초 뒤 결과 페이지로 이동
+    setTimeout(() => {
+      navigate("/result2", { state: { imageUrl: selectedImage } });
+    }, 4000);
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#FFF8F8]">
+    <div className="h-screen flex flex-col bg-[#FFF8F8] relative">
       <Header />
       <BackButton />
 
       {/* 본문 콘텐츠 */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-4 pb-8 overflow-y-auto max-w-screen-sm w-full mx-auto">
-        <label htmlFor="file-upload" className="cursor-pointer">
+        <label htmlFor="file-upload-2" className="cursor-pointer">
           {selectedImage ? (
             <img
               src={selectedImage}
@@ -46,7 +53,7 @@ export default function PhotoUpload() {
         </label>
 
         <input
-          id="file-upload"
+          id="file-upload-2"
           type="file"
           accept="image/*"
           capture="environment"
@@ -64,11 +71,22 @@ export default function PhotoUpload() {
       <div className="px-4 pb-20 max-w-screen-sm w-full mx-auto">
         <button
           onClick={handleSubmit}
-          className="w-full py-3 bg-black text-white rounded-lg text-sm font-medium hover:opacity-90 transition"
+          disabled={isLoading}
+          className={`w-full py-3 text-white rounded-lg text-sm font-medium transition
+            ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:opacity-90"}`}
         >
           제출
         </button>
       </div>
+
+      {/* 로딩 오버레이 */}
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="text-white text-lg font-medium">
+            진단중입니다...
+          </div>
+        </div>
+      )}
     </div>
   );
 }
