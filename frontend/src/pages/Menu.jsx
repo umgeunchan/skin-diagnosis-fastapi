@@ -8,7 +8,7 @@ export default function Menu() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: "최근 진단 이력", path: "/history" },
+    { label: "최근 진단 이력", path: "/history2" },
     { label: "주의사항", path: "/guide" },
     { label: "회원 정보 조회", path: "/profile" },
     { label: "앱 사용 가이드", path: "/help" },

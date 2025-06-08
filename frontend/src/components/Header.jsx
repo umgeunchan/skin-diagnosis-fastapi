@@ -11,7 +11,7 @@ export default function Header() {
         <FaBars size={20} />
       </button>
       <h1 className="text-lg font-bold">DermaScan</h1>
-      <button onClick={() => navigate('/')}>
+      <button onClick={() => navigate('/home2')}>
         <FaHome size={20} />
       </button>
     </header>

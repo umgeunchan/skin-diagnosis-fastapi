@@ -1,17 +1,24 @@
-// src/pages/Home.jsx
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 import news1 from "../assets/news1.jpg";
 import news2 from "../assets/news2.jpg";
 import news3 from "../assets/news3.jpg";
-import acne from "../assets/acne.jpg";
-import mosquito from "../assets/mosquitobite.jpg";
-import shingles from "../assets/shingles.jpg";
-import skincancer from "../assets/skincancer.jpg";
+import hemangiomaImg from "../assets/화농성 육아종.png";
+import nevusImg       from "../assets/흑색점.png";
 
-export default function Home() {
+export default function Home2() {
   const navigate = useNavigate();
+
+  const recent = [
+    { img: nevusImg,      label: "흑색점" },
+    { img: hemangiomaImg, label: "화농육아종" },
+  ];
+
+  const handleClick = (label) => {
+    const path = label === "흑색점" ? "/detail2" : "/detail";
+    navigate(path, { state: { diagnosis: label } });
+  };
 
   return (
     <div className="h-screen flex flex-col bg-[#FCF6F5]">
@@ -37,7 +44,6 @@ export default function Home() {
               "자외선 차단제 : 올바르게 선택하고 바르는 방법",
               "자외선이 피부에 끼치는 영향을 알아보자",
             ];
-
             return (
               <div
                 key={idx}
@@ -60,24 +66,36 @@ export default function Home() {
           })}
         </div>
 
-        {/* 최근 진단 이력 헤더 */}
+        {/* 최근 진단 이력 */}
         <div className="flex items-center justify-between mt-20 mb-2">
           <h2 className="text-lg font-semibold">최근 진단 이력</h2>
           <span
-            onClick={() => navigate("/history")}
+            onClick={() => navigate("/history2")}
             className="text-sm text-gray-500 cursor-pointer"
           >
             {">"}
           </span>
         </div>
 
-        {/* 고정 메시지 */}
-        <div className="text-center text-gray-500 mb-10">
-          진단 이력이 없습니다.
+        <div className="flex space-x-4 overflow-x-auto mb-10">
+          {recent.map(({ img, label }, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => handleClick(label)}
+            >
+              <img
+                src={img}
+                alt={label}
+                className="w-16 h-16 rounded-full object-cover"
+              />
+              <span className="text-xs mt-1">{label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* 진단하기 버튼 */}
+      {/* 진단하기 버튼 - 하단 고정 */}
       <div className="px-4 pb-20 max-w-screen-sm w-full mx-auto">
         <button
           onClick={() => navigate("/guide")}

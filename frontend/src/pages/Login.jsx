@@ -14,7 +14,7 @@ export default function Login() {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/"); // 로그인 후 홈으로
+      navigate("/home"); // 로그인 후 홈으로
     } catch (err) {
       setError(err.message);
     }

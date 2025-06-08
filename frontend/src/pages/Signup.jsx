@@ -14,7 +14,7 @@ export default function SignUp() {
     setError("");
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/"); // 가입 후 홈으로
+      navigate("/login"); // 가입 후 홈으로
     } catch (err) {
       setError(err.message);
     }
