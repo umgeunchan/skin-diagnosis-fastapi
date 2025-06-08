@@ -27,7 +27,7 @@ export default function PhotoUpload2() {
     setIsLoading(true);
     // 4초 뒤 결과 페이지로 이동
     setTimeout(() => {
-      navigate("/result2", { state: { imageUrl: selectedImage } });
+      navigate("/result", { state: { imageUrl: selectedImage } });
     }, 4000);
   };
 
